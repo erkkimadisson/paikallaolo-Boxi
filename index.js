@@ -4,10 +4,10 @@ const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 require("./Utilities/initDatabase")()
 
-const TOKEN = process.env['BOT_TOKEN']
 require('./registerCommands');
 const fs = require('node:fs');
 const path = require('node:path');
+require('dotenv').config();
 
 global.appRoot = path.resolve(__dirname);
 
@@ -43,4 +43,4 @@ for (const file of eventFiles) {
 }
 
 // Login to Discord with your client's token
-client.login(TOKEN);
+client.login(process.env.BOT_TOKEN);

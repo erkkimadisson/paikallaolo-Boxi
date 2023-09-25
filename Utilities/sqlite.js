@@ -1,12 +1,6 @@
-const sqlite3 = require('sqlite3');
-const { open } = require('sqlite');
-
+const sqlite3 = require('sqlite3').verbose();
+const path = require('node:path')
 // you would have to import / invoke this in another file
-module.exports = async function openDb () {
-  return open({
-    filename: '/database.db',
-    driver: sqlite3.Database
-  })
-}
 
+module.exports = new sqlite3.Database(path.join(__dirname, '../database.db'), (err) => console.error(err));
 

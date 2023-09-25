@@ -35,8 +35,15 @@ module.exports = {
       .setLabel("Milloin lähdit?")
       // Paragraph means multiple lines of text.
       .setStyle(TextInputStyle.Short);
+    
+    const nimiInput = new TextInputBuilder()
+      .setCustomId('Oppilas')
+      .setLabel("Koko Nimesi")
+      // Paragraph means multiple lines of text.
+      .setStyle(TextInputStyle.Short);
     // An action row only holds one text input,
     // so you need one action row per text input.
+    const Nimi = new ActionRowBuilder().addComponents(nimiInput);
     const Tapahtuma = new ActionRowBuilder().addComponents(tapahtumaInput);
     const Päiväys = new ActionRowBuilder().addComponents(päivämääräInput);
 
@@ -45,7 +52,7 @@ module.exports = {
 
 
     // Add inputs to the modal
-    modal.addComponents(Tapahtuma, Päiväys, PaikalleTulo, PaikaltaMeno);
+    modal.addComponents(Nimi, Tapahtuma, Päiväys, PaikalleTulo, PaikaltaMeno);
 
     // Show the modal to the user
     await interaction.showModal(modal);
